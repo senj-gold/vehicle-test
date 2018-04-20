@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    td { width: 100px}
+</style>
+
+<div class="example-wrapper">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>drive</td>
+            <td>fly</td>
+            <td>swim</td>
+        </tr>
+        {% for vehicle in vehicles %}
+        <tr>
+            <td>{{ vehicle.name }}</td>
+            <td>{{ vehicle.move ? vehicle.move.isMove ? 'yes' : 'no' : 'can`t' }}</td>
+            <td>{{ vehicle.fly is defined ? vehicle.fly.isFly ? 'yes' : 'no' : 'can`t' }}</td>
+            <td>{{ vehicle.swim is defined ? vehicle.swim.isSwim ? 'yes' : 'no' : 'can`t' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -34,11 +34,11 @@ class Vehicle
     {
         echo $this->name . ' swimming';
     }
-	public function emptyLoads($object) 
+	public function emptyLoads($object)
 	{
 		echo $this->name . ' refuel' . $object;
 	}
-	public function refuel($object) 
+	public function refuel($object)
 	{
 		echo $this->name . ' refuel' . $object;
 	}
@@ -64,7 +64,6 @@ foreach($vehicles as $vehicle) {
             break;
         case 'kamaz':
         	$vehicle->move();
-			$vehicle->stop();
             $vehicle->emptyLoads();
             break;
     }

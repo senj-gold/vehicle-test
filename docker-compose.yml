@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+  test-nginx:
+    build: docker/nginx/
+    ports:
+      - ${NGINX_PORT}:80
+    depends_on:
+      - test-php
+    volumes:
+      - .:/var/www
+
+  test-php:
+    build:
+      context: docker/php/
+      args:
+        TIMEZONE: 'UTC'
+    env_file:
+      - ./.env
+    ports:
+      - ${PHP_PORT}:9000
+    volumes:
+      - ${SSH_PATH}:/home/test/.ssh
+      - .:/var/www
+
+  test-mysql:
+    image: mysql:5.6
+    ports:
+      - ${MYSQL_PORT}:3306
+    env_file:
+      - ./.env
+    volumes:
+      - "./docker/volumes/mysql/dev:/var/lib/mysql"
